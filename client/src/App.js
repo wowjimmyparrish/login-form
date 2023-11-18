@@ -18,6 +18,7 @@ function App() {
     });
   }, [setUser]);
 
+  // if user is not logged in, redirect to login page
   if (!user) return <Login  />;
 
 
