@@ -17,6 +17,10 @@ code {
     monospace;
 }
 
+.input{
+  border: 0.15em solid blue
+}
+
 /* Button */
 .button {
   /* 1. position  */

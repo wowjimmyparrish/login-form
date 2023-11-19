@@ -26,21 +26,25 @@ function SignupForm() {
     }).then((r) => {
       if (r.ok) {
         r.json().then(setUser);
-        setIsLoading(false)
+        
       } else {
         r.json().then((errorData) => setErrors(errorData.errors));
       }
+      setIsLoading(false)
     });
   }
   if (isLoading) {
-    return <p>Loading...</p>
+    return (<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>)
   }
   return (
     <form onSubmit={handleSubmit}>
       <h5 >
         Email:
       </h5>
-      <input
+      <input 
+        className="input rounded-pill"
         type="email"
         id="email"
         value={email}
@@ -49,7 +53,8 @@ function SignupForm() {
       <div className="mt-2">
         <h5>Password:</h5>
       </div>
-      <input
+      <input 
+        className="input rounded-pill"
         type="password"
         id="password"
         value={password}
@@ -58,14 +63,15 @@ function SignupForm() {
       <div className="mt-2">
         <h5>Confirm Password:</h5>
       </div>
-      <input
+      <input 
+        className="input rounded-pill"
         type="password"
         id="password_confirmation"
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
       <div className="pt-2">
-        <button className="button" type="submit">Submit</button>
+        <button className='button' type="submit">Submit</button>
       </div>
       {errors.length > 0 && (
         <ul style={{ color: "red" }}>

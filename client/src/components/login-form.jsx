@@ -25,22 +25,26 @@ function LoginForm() {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
-          setIsLoading(false)
+         
          
         });
       } else {
         r.json().then((errorData) => setErrors(errorData.error));
       }
+      setIsLoading(false)
     });
   }
 
   if (isLoading) {
-    return <p>Loading...</p>
-}
+    return (<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>)
+  }
   return (
     <form onSubmit={handleSubmit}>
       <h5 >Email</h5>
-      <input
+      <input 
+        className="input rounded-pill"
         type="email"
         id="email"
         autoComplete="off"
@@ -50,7 +54,8 @@ function LoginForm() {
       <div className='mt-2'>
         <h5>Password</h5>
       </div>
-      <input
+      <input 
+        className="input rounded-pill"
         type="password"
         id="password"
         autoComplete="current-password"
