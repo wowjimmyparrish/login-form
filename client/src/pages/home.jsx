@@ -16,7 +16,7 @@ function Home() {
   return (
     <div className='text-center'>
     <h2>Welcome, {user.email}!</h2>
-    <button onClick={handleLogout}>Logout</button>
+    <button className= 'button' onClick={handleLogout}>Logout</button>
     </div>
   )
 }

@@ -26,7 +26,7 @@ function App() {
     <div>
    <main>
     <Switch>
-        <Route exact path="/">
+        <Route path="/">
           <Home/>
         </Route>
     </Switch>

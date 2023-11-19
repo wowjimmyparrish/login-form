@@ -6,12 +6,15 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { setUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false)
+
 
   
  
 // This function is triggered when a form is submitted. It prevents the default form submission behavior, sends a POST request to the "/login" endpoint with JSON data containing an email and password, and handles the response. If the response is successful (status code 200), it sets the user using the returned data. Otherwise, it sets the errors using the error data from the response.
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true)
     fetch("/login", {
       method: "POST",
       headers: {
@@ -22,7 +25,7 @@ function LoginForm() {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
-          
+          setIsLoading(false)
          
         });
       } else {
@@ -30,6 +33,10 @@ function LoginForm() {
       }
     });
   }
+
+  if (isLoading) {
+    return <p>Loading...</p>
+}
   return (
     <form onSubmit={handleSubmit}>
       <h5 >Email</h5>
@@ -51,7 +58,7 @@ function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <div className="pt-2">
-        <button type ="submit">Login</button>
+        <button className="button" type ="submit">Login</button>
        
       </div>
       <p style={{ color: "red" }}>{errors}</p>

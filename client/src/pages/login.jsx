@@ -7,7 +7,7 @@ function Login() {
   return (
     <div className="text-center pt-5">
       <div>
-        <h1>Login Page</h1>
+        <h1>LOGIN PAGE</h1>
       </div>
       {showLogin ? (
         <div>
@@ -19,7 +19,7 @@ function Login() {
               Don't have an account?
               </p>
               <div className="mt-2">
-                <button onClick={() => setShowLogin(false)}>Sign Up</button>{' '}
+                <button className='button'onClick={() => setShowLogin(false)}>Sign Up</button>{' '}
               </div>
             
           </div>
@@ -31,7 +31,7 @@ function Login() {
             <p>
               Already have an account?
               <div className="pt-2">
-              <button  onClick={() => setShowLogin(true)}>Log In</button>{' '}
+              <button className='button' onClick={() => setShowLogin(true)}>Log In</button>{' '}
               </div>
             </p>
           </div>

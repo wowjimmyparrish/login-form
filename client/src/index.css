@@ -5,9 +5,82 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:linear-gradient(to bottom right, #FFDEF2, #E6F0FF);
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  height: max-content;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Button */
+.button {
+  /* 1. position  */
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+
+  /*2. hidden overflow :before, :after  */
+  overflow: hidden;
+
+  /* 3. text */
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 0.75em;
+  color: blue;
+
+  /* spacing */
+  padding: 0.75em 1em;
+
+  /* 4. border */
+  border: 0.15em solid blue;
+  border-radius: 2em;
+
+  /*change property values smoothly  */
+  transition: 4s;
+}
+
+.button::before,
+.button::after {
+  content: "";
+  position: absolute;
+  top: -1.5em;
+  z-index: -1;
+
+  width: 200%;
+  aspect-ratio: 1;
+
+  border: none;
+  border-radius: 40%;
+
+  background-color: rgba(0, 0, 255, 0.25);
+
+  transition: 4s;
+}
+
+.button::before {
+  left: -80%;
+  transform: translate3d(0, 5em, 0) rotate(-340deg);
+}
+
+.button::after {
+  right: -80%;
+  transform: translate3d(0, 5em, 0) rotate(390deg);
+}
+.button:hover,
+.button:focus {
+  color: white;
+}
+
+.button:hover::before,
+.button:hover::after,
+.button:focus::before,
+.button:focus::after {
+  transform: none;
+  background-color: rgba(0, 0, 255, 0.75);
 }
